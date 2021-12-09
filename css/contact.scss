@@ -1,0 +1,158 @@
+@import '_common2';
+
+
+.contact_wrap{
+    padding:10%;
+    margin: 0 9%;
+}
+.contact_sec-1{
+    font-family: 'Noto Sans KR', sans-serif;
+    margin:0 9%;
+    width: 100%;
+        h3{
+            color:#ef5025;
+            font-size: 40px;
+            position: relative;
+            left:0; top:0;
+            overflow: hidden;
+            display: inline-block;
+            margin-top: 20px;
+            width:250px;
+            transition: 0.2s;
+            font-weight: 900;
+            margin-bottom: 30px;
+            div{
+                animation: fadeIn 0s 1.5s;
+                animation-fill-mode: backwards;}
+                &::after{
+                content: '';
+                position: absolute;
+                left:0; top:50%;
+                width:100%;
+                height:100%;
+                background-color: #ef5025;
+                transform: translateX(-100%);
+                animation: secondaryImageOverlayIn_2 0.6s 0s,
+                secondaryImageOverlayOut_2 1.3s 1.3s;
+                animation-fill-mode: both;}
+        }
+        .contact_addr{
+          font-size: 18px;
+          color:#333;
+          transform: translateX(10%);
+          opacity: 0;
+          animation: addr-ani 0.5s 1.7s forwards;
+      }
+      }
+.contact_txt_wrap{
+  width: 100%;
+  display: flex;
+  padding-top: 80px;
+  font-size: 18px;
+  color:#333;
+  justify-content: space-between;
+  li{
+    position: relative;
+    margin-bottom:10px;
+    transform: translate3d(0,100px,0);
+    opacity: 0;
+    i{
+      position: absolute;
+      left:0;top:4px;
+    }
+  span{
+    position: absolute;
+    left:40px;}
+  }
+}
+
+.contact_txt01{width:50%;
+  li{padding-left: 200px;}
+}
+.contact_txt02{width:50%;
+  li{padding-left: 300px}}
+.ic_call::before{
+  content:url('../img/call_black.png');}
+
+.ic_fax::before{
+  content:url('../img/print_black.png');}
+
+ .ic_mail::before{
+  content:url('../img/email_black.png');}
+
+  .ic_ask::before{
+    content:url('../img/video_black.png');}
+  
+  .ic_evt::before{
+    content:url('../img/desktop_black.png');}
+  
+   .ic_media::before{
+    content:url('../img/duo_black.png');}
+
+    .contact_cont{
+      $li : (1);
+    @each $num in $li {
+        li:nth-of-type(#{$num}){
+            animation: li_up 1s 1.7s forwards;
+        }
+    }
+    $li : (2);
+    @each $num in $li {
+        li:nth-of-type(#{$num}){
+            animation: li_up 1s 1.8s forwards;
+        }
+    }
+    $li : (3);
+    @each $num in $li {
+        li:nth-of-type(#{$num}){
+            animation: li_up 1s 1.9s forwards;
+        }
+    }
+    }
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+  
+  @keyframes secondaryImageOverlayIn_2 {
+    0% {width: 0%;}
+    100% {width: 150%;}
+  }
+  
+  @keyframes secondaryImageOverlayOut_2 {
+    0%{transform:translate(-110%, -60%)};
+    55%{transform: translate(0, -60%)};
+    100%{transform: translate(110%, -60%)}
+  }
+
+.contact_sec-2{
+  width: 100%;
+  padding-top:  10%;
+  map{position: relative;}
+}
+.root_daum_roughmap{
+  transform: translate3d(0,100px,0);
+  opacity: 0;
+  animation: li_up 0.5s 2.2s forwards;
+  position: absolute;
+  left: -31%;
+  filter: grayscale(100%);
+}
+
+.root_daum_roughmap:hover{
+  filter: grayscale(0);
+}
+
+@keyframes li_up {
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+}
+
+@keyframes addr-ani{
+
+  to{transform: translateX(0);
+      opacity: 1;}
+}
