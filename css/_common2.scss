@@ -21,6 +21,29 @@ header{
     align-items: center;
     justify-content: center;
 }
+@mixin flex($dp,$wi,$po,$to,$le,$bc,$vi,$tr,$op){
+    display: $dp;
+    width: $wi;
+    position: $po;
+    top: $to;
+    left: $le;
+    background: $bc;
+    visibility: $vi;
+    transition: $tr;
+    opacity: $op;
+}
+@mixin after($co,$po,$le,$bo,$wi,$he,$bc,$tr){
+
+    content: $co;
+    position: $po;
+    left: $le;
+    bottom: $bo;
+    width: $wi;
+    height: $he;
+    background: $bc;
+    transition: $tr;
+}
+
 @keyframes h_ani{
     0%{transform: translateY(-100%);opacity: 0;}
     100%{transform: translateY(0)}}
@@ -98,47 +121,18 @@ header{
 }
 .menu1{position: relative;}
 .menu1>a::after{
-    content: "";
-    position: absolute;
-    left: 20px;
-    bottom: -2px;
-    width: 0%;
-    height: 3px;
-    background: #ef5025;
-    transition: 0.3s;
+    @include after('', absolute, 20px, -2px, 0%, 3px, #ef5025,0.3s);
 }
 .menu1:hover{a::after{width:70%;}}
 
 .menu2{position: relative;}
 .menu2>a:after{
-    content: "";
-    position: absolute;
-    left: 20px;
-    bottom: -2px;
-    width: 0%;
-    height: 3px;
-    background: #ef5025;
-    transition: 0.3s;
+    @include after('', absolute, 20px, -2px, 0%, 3px, #ef5025,0.3s);
 }
 .menu2:hover{a::after{width:70%;}}
 
-.sub_menu{
-    display: flex;
-    width: 100%;
-    position: absolute;
-    top: 100%;left: 10%;
-    background: rgb(255, 255, 255);
-    visibility: hidden;
-    transition: 0.4s; opacity: 0;
-}
-.sub_menu2{
-    display: flex;
-    width: 100%;
-    position: absolute;
-    top: 100%;left: 10%;
-    background: rgb(255, 255, 255);
-    visibility: hidden;
-    transition: 0.4s; opacity: 0;
+.sub_menu, .sub_menu2{
+    @include flex(flex,100%,absolute,100%,10%,rgb(255, 255, 255),hidden,0.4s,0);
 }
 
 .menu li:hover .sub_menu{visibility: visible; opacity: 1;
@@ -149,28 +143,14 @@ header{
 .menu3{position: relative;}
 
 .menu3{a::after{
-    content: "";
-    position: absolute;
-    left: 20px;
-    bottom: -2px;
-    width: 0%;
-    height: 2px;
-    background: #ef5025;
-    transition: 0.3s;
+    @include after('', absolute, 20px, -2px, 0%, 3px, #ef5025,0.3s);
 }}
 .menu3:hover{a::after{width:70%;}}
 
 .menu4{position: relative;}
 
 .menu4{a::after{
-    content: "";
-    position: absolute;
-    left: 20px;
-    bottom: -2px;
-    width: 0%;
-    height: 2px;
-    background: #ef5025;
-    transition: 0.3s;
+    @include after('', absolute, 20px, -2px, 0%, 3px, #ef5025,0.3s);
 }}
 
 .menu4:hover{a::after{width:70%;}}
@@ -182,10 +162,11 @@ header{
 }
 
 .sub_menu2 li{
-    width: 100%; height: 50px;
-    white-space: nowrap;
+    width: 100%;
+    height: 50px;
     text-align: center;
     padding: 10%;
+    white-space: nowrap;
 }
 
 @keyframes sub_ani{
